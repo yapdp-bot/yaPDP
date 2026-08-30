@@ -163,5 +163,5 @@ His work is a masterclass in retro‑UI simulation. Thank you, Norbert.
 
 *Happy emulating!*
 
-— Paul Nankervis (*original author*)  
+— Alexei Eskenazi  
 — *Fork maintained with love for the DEC era*
