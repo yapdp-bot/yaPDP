@@ -37,7 +37,7 @@ The full walkthrough of every feature lives in
 
 ### Live Demo
 
-- [**yaPDP**](https://paulnank.github.io/pdp11-js/pdp11.html)
+- [**yaPDP**](https://amesk.github.io/yaPDP/pdp11.html)
 
 The repository root also contains [`index.html`](index.html) — a landing page in the
 same DEC style as the emulator itself — and [`manual.html`](manual.html), a
@@ -88,7 +88,7 @@ The emulator ships with ready-to-boot disk and tape images. Just type `boot <dev
 
 ## Quick Start
 
-1. Open the [yaPDP emulator](https://paulnank.github.io/pdp11-js/pdp11.html).
+1. Open the [yaPDP emulator](https://amesk.github.io/yaPDP/pdp11.html).
 2. At the `@` prompt, type `boot rp1` and press ENTER.
 3. BSD 2.11 will autoboot into multiuser mode. Login as `root` (no password).
 4. Try `ls`, `ps -aux`, `df` — or compile a C program with `cc`.
