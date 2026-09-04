@@ -44,6 +44,12 @@ linked docs/issues. Known emulator bugs are tracked separately in
   `index.html`/`manual.html`.
 - **Full-disk write-back UX.** Guest writes already persist (DiskStore
   overlay); surface it in the UI (dirty indicators, reset-to-pristine).
+- **Landing click-through e2e before any site publish.** The 0.1.0 site
+  went live with dead navbar shortcuts, a search box that filtered only
+  the guest table and a footer button that opened a broken modal — all
+  found by manual QA on the live site. A puppeteer click-through
+  (every CTA/view switch, manual search, iframe load, zero 404s) should
+  run in CI on landing/** changes and gate the pages workflow.
 - **Release artifacts built in CI.** The 0.1.0 dirty-tree incident (a local
   uncommitted teletype CSS experiment shipped in the Windows installers
   while the clean-built site was fine) proved the last non-CI release step
