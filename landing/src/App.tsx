@@ -8,14 +8,12 @@ import { PersonalNote } from './components/PersonalNote.tsx';
 import { GetStarted } from './components/GetStarted.tsx';
 import { DownloadSection } from './components/DownloadSection.tsx';
 import { Acknowledgments } from './components/Acknowledgments.tsx';
-import { LiveEmulatorModal } from './components/LiveEmulatorModal.tsx';
 import { UserManual } from './components/UserManual.tsx';
 import { PDP11Emulator } from './components/PDP11Emulator.tsx';
 
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ru'>('en');
   const [view, setView] = useState<'overview' | 'manual' | 'emulator'>('overview');
-  const [isEmulatorOpen, setIsEmulatorOpen] = useState<boolean>(false);
 
   const toggleLanguage = () => {
     setLang((prev) => (prev === 'en' ? 'ru' : 'en'));
@@ -174,22 +172,16 @@ export default function App() {
               </button>
               <span>·</span>
               <button
-                onClick={() => setIsEmulatorOpen(true)}
+                onClick={() => handleSelectView('emulator')}
                 className="hover:text-[#c8a860] transition-colors cursor-pointer"
               >
-                {lang === 'en' ? 'Online Emulator' : 'Эмулятор'}
+                {lang === 'en' ? 'Emulator' : 'Эмулятор'}
               </button>
             </div>
           </div>
         </footer>
       </div>
 
-      {/* Fullscreen Interactive Emulator Modal */}
-      <LiveEmulatorModal
-        isOpen={isEmulatorOpen}
-        onClose={() => setIsEmulatorOpen(false)}
-        lang={lang}
-      />
     </div>
   );
 }
