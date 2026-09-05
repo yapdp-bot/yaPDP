@@ -136,7 +136,10 @@ jobs:
           gh release create "$TAG" --draft \
             --title "$TAG" \
             --notes-file RELEASE_NOTES.md 2>/dev/null || true
-          # Docs + checksums first, then all installer bundles.
+          # Docs + checksums first, then only the installer files. Do NOT
+          # upload bundles/**/* wildcard: the artifacts directory also holds
+          # Tauri bundle intermediates (.AppDir, .pkg dirs, 'empty'), and gh
+          # fails on "is a directory". Upload just the release artifacts.
           gh release upload "$TAG" staged/* --clobber
-          gh release upload "$TAG" bundles/**/* --clobber
+          gh release upload "$TAG" $(find bundles -type f \( -name '*.deb' -o -name '*.rpm' -o -name '*.AppImage' -o -name '*.msi' -o -name '*.exe' \)) --clobber
           echo "Draft release $TAG staged. Review, smoke-test, then publish."
