@@ -55,11 +55,17 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Install Linux bundling deps
+      - name: Install Linux build deps (Tauri v2 system libs)
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libfuse2 patchelf
+          # Tauri v2 native build/runtime deps (see README.md build prereqs) +
+          # libfuse2/patchelf for AppImage bundling. Without the gtk/glib/webkit
+          # dev packages the rehearsal build fails compiling glib-sys/gtk-sys.
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev build-essential curl wget file \
+            libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev \
+            libfuse2 patchelf
 
       - name: Set up Rust toolchain
         uses: dtolnay/rust-toolchain@stable
