@@ -64,6 +64,13 @@ jobs:
       - name: Set up Rust toolchain
         uses: dtolnay/rust-toolchain@stable
 
+      # tauri-build.js runs `cargo tauri build`; the cargo-tauri CLI is a
+      # separate binary that is NOT installed by the rust toolchain. The
+      # rehearsal run failed with "error: no such command: tauri" for this
+      # reason. Install tauri-cli v2 (matches README build prereqs).
+      - name: Install Tauri CLI
+        run: cargo install tauri-cli --version "^2" --locked
+
       - name: Install frontend deps
         run: npm ci
 
