@@ -102,6 +102,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- The Model 33 ASR artwork now carries only the drawing that is actually
+  shown: the dead `display:none` **Background** layer — an obsolete pixel
+  trace of the scene, 12 paths and 1.95 MB of the file's 2.02 MB — is gone,
+  and the hand-drawn **New background** takes its name. The console page's
+  artwork drops from 2,022,820 to 74,996 bytes (96.3% smaller; 721,429 to
+  18,259 bytes over the wire) and no longer parses a layer it never painted.
+  Renders are visually identical (0.040% mean pixel difference) and the
+  marker/layer contract in `tests/teletype-svg-backdrop.test.js` still
+  holds. (`assets/Model-33-ASR.svg`)
+
 - Reading past the end of a mounted disk/tape image no longer stops the
   machine: the missing cache block is now created explicitly, so the guest
   gets a completion (zeros — a tape sees its record mark and ends the read
